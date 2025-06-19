@@ -1,13 +1,14 @@
 from types import SimpleNamespace
 from typing import Any
 
+from sanic import Request, Sanic
+from sanic.response import json
+
 from riot.api.account import Account
 from riot.api.league import League
 from riot.api.summoner import Summoner
 from riot.api.wrapper import RiotAPI
 from riot.config import ServerConfig
-from sanic import Request, Sanic
-from sanic.response import json
 
 
 class ServerContext(SimpleNamespace):
@@ -49,7 +50,6 @@ async def get_info(request: ServerRequest):
 
     return json(
         {
-            "name": summoner_info["name"],
             "level": summoner_info["summonerLevel"],
             "iconId": summoner_info["profileIconId"],
             "tier": res[0]["tier"],
