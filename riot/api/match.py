@@ -1,5 +1,5 @@
-from backend.riot.api.route import Route
-from backend.riot.api.wrapper import RiotAPI, T
+from riot.api.route import Route
+from riot.api.wrapper import RiotAPI, T
 
 
 class Match:
