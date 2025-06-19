@@ -3,12 +3,11 @@ from typing import Any
 
 from riot.api.account import Account
 from riot.api.league import League
+from riot.api.summoner import Summoner
 from riot.api.wrapper import RiotAPI
 from riot.config import ServerConfig
 from sanic import Request, Sanic
 from sanic.response import json
-
-from backend.riot.api.summoner import Summoner
 
 
 class ServerContext(SimpleNamespace):
@@ -65,6 +64,8 @@ async def get_info(request: ServerRequest):
 def create_app(config: ServerConfig) -> Server:
     app = Server("RiotAPIWrapper", config=config)
     app.add_route(get_info, "/info", methods=["POST"])
+    app.static("/profileicon", "riot/profileicon", name="profileicon")
+    app.static("/tier", "riot/tier", name="tier")
     app.before_server_start(setup_api)
     app.config.update(config)
     return app

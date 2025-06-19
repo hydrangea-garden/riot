@@ -3,12 +3,11 @@ def main() -> None:  # pragma: no cover
     from functools import partial
     from sys import argv
 
-    from sanic import Sanic
-    from sanic.worker.loader import AppLoader
-
     from riot.argparser import parse_args
     from riot.config import ServerConfig
     from riot.server import create_app
+    from sanic import Sanic
+    from sanic.worker.loader import AppLoader
 
     server_config = ServerConfig()
 
